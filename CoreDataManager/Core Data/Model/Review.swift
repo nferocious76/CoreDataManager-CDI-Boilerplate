@@ -24,4 +24,13 @@ extension Review {
         guard let result = CoreDataManager.shared.executeFetchRequest(request as! NSFetchRequest<NSFetchRequestResult>) as? [Review] else { return (false, []) }
         return (true, result)
     }
+    
+    class func isExist(id: String) -> Review? {
+        
+        let predicate = NSPredicate(format: "id == %@", id)
+        let result = items(withPredicate: predicate)
+        
+        return result.items.first
+    }
+
 }

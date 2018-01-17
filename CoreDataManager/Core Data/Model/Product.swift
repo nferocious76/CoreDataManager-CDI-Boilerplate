@@ -71,6 +71,7 @@ extension Product {
         if let attributes = info["attributes"] as? [[String: AnyObject]] {
             for attribute in attributes {
                 let a = ProductAttribute.attribute(withInfo: attribute)
+                a.productID = product.id
                 product.addToProductAttribute(a)
             }
         }

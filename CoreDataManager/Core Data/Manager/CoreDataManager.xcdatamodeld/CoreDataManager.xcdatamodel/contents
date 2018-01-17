@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="AddressBook" representedClassName="AddressBook" syncable="YES" codeGenerationType="class">
-        <attribute name="addressLabel" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="addressName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="barangay" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="city" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="company" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,11 +15,11 @@
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="middleName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="state" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="streetAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="street" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="telephone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="zip" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="CartProduct" representedClassName="CartProduct" syncable="YES" codeGenerationType="class">
         <attribute name="itemCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -122,7 +122,7 @@
         <relationship name="wishlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wishlist" inverseName="wishlistProduct" inverseEntity="Wishlist" syncable="YES"/>
     </entity>
     <elements>
-        <element name="AddressBook" positionX="-63" positionY="-18" width="128" height="330"/>
+        <element name="AddressBook" positionX="-63" positionY="-18" width="128" height="30"/>
         <element name="CartProduct" positionX="-36" positionY="153" width="128" height="90"/>
         <element name="Category" positionX="-18" positionY="171" width="128" height="30"/>
         <element name="CategoryAttribute" positionX="0" positionY="180" width="128" height="120"/>

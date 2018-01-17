@@ -57,6 +57,7 @@ extension Category {
         if let attributes = info["attributes"] as? [[String: AnyObject]] {
             for attribute in attributes {
                 let a = CategoryAttribute.attribute(withInfo: attribute)
+                a.categoryID = category.id
                 category.addToCategoryAttribute(a)
             }
         }
