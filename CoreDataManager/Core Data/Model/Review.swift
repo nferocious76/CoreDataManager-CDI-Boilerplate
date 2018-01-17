@@ -14,7 +14,7 @@ extension Review {
     /*
      * on.success (true, [Review]) | on.fail (false, [])
      */
-    class func addressBook(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, result: [Review]) {
+    class func items(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, items: [Review]) {
         
         let request: NSFetchRequest<Review> = fetchRequest()
         request.predicate = predicate

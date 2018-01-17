@@ -14,7 +14,7 @@ extension Order {
     /*
      * on.success (true, [Order]) | on.fail (false, [])
      */
-    class func addressBook(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, result: [Order]) {
+    class func items(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, items: [Order]) {
         
         let request: NSFetchRequest<Order> = fetchRequest()
         request.predicate = predicate

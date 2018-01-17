@@ -14,7 +14,7 @@ extension CMS {
     /*
      * on.success (true, [CMS]) | on.fail (false, [])
      */
-    class func addressBook(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, result: [CMS]) {
+    class func items(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, items: [CMS]) {
         
         let request: NSFetchRequest<CMS> = fetchRequest()
         request.predicate = predicate

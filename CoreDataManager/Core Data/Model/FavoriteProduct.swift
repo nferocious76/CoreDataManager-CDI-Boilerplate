@@ -14,7 +14,7 @@ extension FavoriteProduct {
     /*
      * on.success (true, [FavoriteProduct]) | on.fail (false, [])
      */
-    class func addressBook(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, result: [FavoriteProduct]) {
+    class func items(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, items: [FavoriteProduct]) {
         
         let request: NSFetchRequest<FavoriteProduct> = fetchRequest()
         request.predicate = predicate

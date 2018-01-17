@@ -14,7 +14,7 @@ extension CartProduct {
     /*
      * on.success (true, [CartProduct]) | on.fail (false, [])
      */
-    class func addressBook(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, result: [CartProduct]) {
+    class func items(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, items: [CartProduct]) {
         
         let request: NSFetchRequest<CartProduct> = fetchRequest()
         request.predicate = predicate

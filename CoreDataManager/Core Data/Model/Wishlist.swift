@@ -14,7 +14,7 @@ extension Wishlist {
     /*
      * on.success (true, [Wishlist]) | on.fail (false, [])
      */
-    class func addressBook(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, result: [Wishlist]) {
+    class func items(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, items: [Wishlist]) {
         
         let request: NSFetchRequest<Wishlist> = fetchRequest()
         request.predicate = predicate

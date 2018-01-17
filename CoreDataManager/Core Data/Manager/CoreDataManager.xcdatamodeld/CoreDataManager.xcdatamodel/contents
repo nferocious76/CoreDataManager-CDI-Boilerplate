@@ -24,21 +24,22 @@
     <entity name="CartProduct" representedClassName="CartProduct" syncable="YES" codeGenerationType="class">
         <attribute name="itemCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="cart_product" inverseEntity="Product" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="cartProduct" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="Category" representedClassName="Category" syncable="YES" codeGenerationType="class">
-        <attribute name="entityID" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="parentID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="position" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <relationship name="category_attribute" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CategoryAttribute" inverseName="category" inverseEntity="CategoryAttribute" syncable="YES"/>
+        <relationship name="categoryAttribute" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CategoryAttribute" inverseName="category" inverseEntity="CategoryAttribute" syncable="YES"/>
+        <relationship name="product" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product" inverseName="category" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="CategoryAttribute" representedClassName="CategoryAttribute" syncable="YES" codeGenerationType="class">
         <attribute name="attributeCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="categoryID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="category_attribute" inverseEntity="Category" syncable="YES"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="categoryAttribute" inverseEntity="Category" syncable="YES"/>
     </entity>
     <entity name="CMS" representedClassName="CMS" syncable="YES" codeGenerationType="class">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
@@ -50,7 +51,7 @@
         <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="storeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="favorite_product" inverseEntity="Product" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="favoriteProduct" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="Order" representedClassName="Order" syncable="YES" codeGenerationType="class">
         <attribute name="createdAt" optional="YES" attributeType="String" syncable="YES"/>
@@ -76,18 +77,19 @@
         <attribute name="sku" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="totalReviews" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="typeID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="cart_product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartProduct" inverseName="product" inverseEntity="CartProduct" syncable="YES"/>
-        <relationship name="favorite_product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavoriteProduct" inverseName="product" inverseEntity="FavoriteProduct" syncable="YES"/>
-        <relationship name="product_attribute" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductAttribute" inverseName="product" inverseEntity="ProductAttribute" syncable="YES"/>
-        <relationship name="reviews" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="product" inverseEntity="Review" syncable="YES"/>
-        <relationship name="wishlist" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wishlist" inverseName="products" inverseEntity="Wishlist" syncable="YES"/>
+        <relationship name="cartProduct" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CartProduct" inverseName="product" inverseEntity="CartProduct" syncable="YES"/>
+        <relationship name="category" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Category" inverseName="product" inverseEntity="Category" syncable="YES"/>
+        <relationship name="favoriteProduct" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavoriteProduct" inverseName="product" inverseEntity="FavoriteProduct" syncable="YES"/>
+        <relationship name="productAttribute" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ProductAttribute" inverseName="product" inverseEntity="ProductAttribute" syncable="YES"/>
+        <relationship name="review" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Review" inverseName="product" inverseEntity="Review" syncable="YES"/>
+        <relationship name="wishlist" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wishlist" inverseName="product" inverseEntity="Wishlist" syncable="YES"/>
     </entity>
     <entity name="ProductAttribute" representedClassName="ProductAttribute" syncable="YES" codeGenerationType="class">
         <attribute name="attributeCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="product_attribute" inverseEntity="Product" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="productAttribute" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="Review" representedClassName="Review" syncable="YES" codeGenerationType="class">
         <attribute name="dateReviewed" optional="YES" attributeType="String" syncable="YES"/>
@@ -103,34 +105,34 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="reviews" inverseEntity="Product" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="review" inverseEntity="Product" syncable="YES"/>
     </entity>
     <entity name="Wishlist" representedClassName="Wishlist" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="storeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product" inverseName="wishlist" inverseEntity="Product" syncable="YES"/>
-        <relationship name="wishlist_product" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WishlistProduct" inverseName="wishlist" inverseEntity="WishlistProduct" syncable="YES"/>
+        <relationship name="product" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Product" inverseName="wishlist" inverseEntity="Product" syncable="YES"/>
+        <relationship name="wishlistProduct" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="WishlistProduct" inverseName="wishlist" inverseEntity="WishlistProduct" syncable="YES"/>
     </entity>
     <entity name="WishlistProduct" representedClassName="WishlistProduct" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="wishlistID" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="wishlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wishlist" inverseName="wishlist_product" inverseEntity="Wishlist" syncable="YES"/>
+        <relationship name="wishlist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wishlist" inverseName="wishlistProduct" inverseEntity="Wishlist" syncable="YES"/>
     </entity>
     <elements>
         <element name="AddressBook" positionX="-63" positionY="-18" width="128" height="330"/>
         <element name="CartProduct" positionX="-36" positionY="153" width="128" height="90"/>
-        <element name="Category" positionX="-18" positionY="171" width="128" height="120"/>
+        <element name="Category" positionX="-18" positionY="171" width="128" height="30"/>
         <element name="CategoryAttribute" positionX="0" positionY="180" width="128" height="120"/>
-        <element name="Product" positionX="-54" positionY="135" width="128" height="315"/>
-        <element name="Review" positionX="-63" positionY="126" width="128" height="255"/>
-        <element name="Wishlist" positionX="-27" positionY="162" width="128" height="135"/>
         <element name="CMS" positionX="18" positionY="189" width="128" height="90"/>
         <element name="FavoriteProduct" positionX="-27" positionY="135" width="128" height="120"/>
         <element name="Order" positionX="-18" positionY="144" width="128" height="165"/>
+        <element name="Product" positionX="-54" positionY="135" width="128" height="30"/>
         <element name="ProductAttribute" positionX="-9" positionY="153" width="128" height="120"/>
+        <element name="Review" positionX="-63" positionY="126" width="128" height="255"/>
+        <element name="Wishlist" positionX="-27" positionY="162" width="128" height="30"/>
         <element name="WishlistProduct" positionX="0" positionY="162" width="128" height="105"/>
     </elements>
 </model>
