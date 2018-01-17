@@ -14,14 +14,14 @@ extension AddressBook {
     /*
      * on.success (true, [AddressBook]) | on.fail (false, [])
      */
-    class func addressBook(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, result: [Any]) {
+    class func addressBook(withPredicate predicate: NSPredicate? = nil, sortDescriptors: [NSSortDescriptor]? = nil, fetchLimit: Int = 0) -> (success: Bool, result: [CartProduct]) {
         
         let request: NSFetchRequest<AddressBook> = fetchRequest()
         request.predicate = predicate
         request.sortDescriptors = sortDescriptors
         request.fetchLimit = fetchLimit
 
-        guard let result = CoreDataManager.shared.executeFetchRequest(request as! NSFetchRequest<NSFetchRequestResult>) else { return (false, []) }
+        guard let result = CoreDataManager.shared.executeFetchRequest(request as! NSFetchRequest<NSFetchRequestResult>) as? [CartProduct] else { return (false, []) }
         return (true, result)
     }
 }
