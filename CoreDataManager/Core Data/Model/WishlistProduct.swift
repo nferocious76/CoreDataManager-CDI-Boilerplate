@@ -24,4 +24,13 @@ extension WishlistProduct {
         guard let result = CoreDataManager.shared.executeFetchRequest(request as! NSFetchRequest<NSFetchRequestResult>) as? [WishlistProduct] else { return (false, []) }
         return (true, result)
     }
+    
+    class func isExist(id: String) -> WishlistProduct? {
+        
+        let predicate = NSPredicate(format: "id == %@", id)
+        let result = items(withPredicate: predicate)
+        
+        return result.items.first
+    }
+
 }
