@@ -33,4 +33,43 @@ extension Review {
         return result.items.first
     }
 
+    class func review(withInfo info: [String: AnyObject]) -> Review {
+        
+        let id = "\(info["reviewId"]!)"
+        let customerID = "\(info["customerId"]!)"
+        let createdAt = "\(info["createdAt"]!)"
+        let detail = "\(info["detail"]!)"
+        let username = "\(info["nickname"]!)"
+        let title = "\(info["title"]!)"
+        let detailId = "\(info["detailId"]!)"
+        let productName = "\(info["productName"]!)"
+        let productImageURL = "\(info["smallImage"]!)"
+        let productID = "\(info["entityPkValue"]!)"
+        
+        let statusID = "\(info["statusId"]!)"
+        let rating = info["rating"]?.floatValue ?? 0.0
+        let storeID = "\(info["storeId"]!)"
+
+        let review = isExist(id: id) ?? NSEntityDescription.insertNewObject(forEntityName: "Review", into: CoreDataManager.shared.context) as! Review
+        
+        review.id = id
+        review.customerID = customerID
+        review.createdAt = createdAt
+        review.detail = detail
+        review.userName = username
+        review.title = title
+        review.detailID = detailId
+        review.productName = productName
+        review.productImageURL = productImageURL
+        review.productID = productID
+        review.statusID = statusID
+        review.rating = rating
+        review.storeID = storeID
+     
+        if let product = Product.isExist(id: productID) {
+            product.addToReview(review)
+        }
+        
+        return review
+    }
 }

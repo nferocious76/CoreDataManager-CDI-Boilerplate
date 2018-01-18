@@ -34,21 +34,23 @@ extension AddressBook {
     }
     
     class func addressBook(withInfo info: [String: AnyObject]) -> AddressBook {
-        
-        
+
         let id = "\(info["id"]!)"
         let firstName = "\(info["firstName"]!)"
-        let middleName = "\(info["middleName"]!)"
+        let middleName = info["middleName"] as? String ?? ""
         let lastName = "\(info["lastName"]!)"
+
+        let company = info["company"] as? String ?? ""
+        let telephone = info["telephone"] as? String ?? ""
+
         let addressName = "\(info["addressName"]!)"
-        let company = "\(info["company"]!)"
-        let telephone = "\(info["telephone"]!)"
         let houseNumber = "\(info["houseNumber"]!)"
-        
         let street = "\(info["street"]!)"
-//        let province = "\(info["province"]!)"
-        let city = "\(info["city"]!)"
-        let postcode = "\(info["postcode"]!)"
+        let barangay = "\(info["barangay"]!)"
+        let province = info["province"] as? String ?? ""
+        let city = info["city"] as? String ?? ""
+        let postcode = info["postcode"] as? String ?? ""
+        
         let lat = info["lat"]?.doubleValue ?? 0.0
         let lng = info["lng"]?.doubleValue ?? 0.0
         let cAddress = completeAddress(fromInfo: info)
@@ -59,14 +61,18 @@ extension AddressBook {
         addressBook.firstName = firstName
         addressBook.middleName = middleName
         addressBook.lastName = lastName
-        addressBook.addressName = addressName
+
         addressBook.company = company
         addressBook.telephone = telephone
+
+        addressBook.addressName = addressName
         addressBook.houseNumber = houseNumber
         addressBook.street = street
+        addressBook.barangay = barangay
         addressBook.city = city
-        
+        addressBook.province = province
         addressBook.postcode = postcode
+        
         addressBook.latitude = lat
         addressBook.longitude = lng
         addressBook.completeAddress = cAddress
