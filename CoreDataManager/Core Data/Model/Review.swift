@@ -67,7 +67,7 @@ extension Review {
         review.storeID = storeID
      
         if let product = Product.isExist(id: productID) {
-            product.addToReview(review)
+            review.product = product
         }
         
         return review

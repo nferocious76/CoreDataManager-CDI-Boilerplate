@@ -49,7 +49,6 @@
     <entity name="FavoriteProduct" representedClassName="FavoriteProduct" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="productID" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="storeID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Product" inverseName="favoriteProduct" inverseEntity="Product" syncable="YES"/>
     </entity>
@@ -127,7 +126,7 @@
         <element name="Category" positionX="-18" positionY="171" width="128" height="30"/>
         <element name="CategoryAttribute" positionX="0" positionY="180" width="128" height="120"/>
         <element name="CMS" positionX="18" positionY="189" width="128" height="90"/>
-        <element name="FavoriteProduct" positionX="-27" positionY="135" width="128" height="120"/>
+        <element name="FavoriteProduct" positionX="-27" positionY="135" width="128" height="105"/>
         <element name="Order" positionX="-18" positionY="144" width="128" height="165"/>
         <element name="Product" positionX="-54" positionY="135" width="128" height="30"/>
         <element name="ProductAttribute" positionX="-9" positionY="153" width="128" height="120"/>
